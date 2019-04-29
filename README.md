@@ -1,1 +1,0 @@
-# ZPI_2019_Dzienni_IO4_jamniki
