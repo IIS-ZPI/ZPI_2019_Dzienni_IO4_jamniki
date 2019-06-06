@@ -1,5 +1,8 @@
 language: java
 jdk: oraclejdk11
+
+sudo: required
+
 before_install:
   - chmod +x mvnw
 
