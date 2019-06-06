@@ -1,4 +1,4 @@
-package woof_package;
+package com.currency;
 
 public class Simple {
 
