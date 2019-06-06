@@ -1,10 +1,12 @@
 language: java
-jdk: oraclejdk11
+
+before_install:
+  - chmod +x mvnw
 
 script:
   - mvn validate
   - mvn compile
   - mvn test -B
-   - if [ "$TRAVIS_BRANCH" == "master" ]; then
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
       mvn package;
     fi
