@@ -133,6 +133,53 @@ public class CurrencyCalculatorTest {
 
         assertEquals(currencyCalculator.howManyDaysItGrew(arrayList), 121);
     }
+    @Test public void calculateConstantDaysWeek() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("week"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItWasConstant(arrayList), 0);
+    }
+
+    @Test public void calculateConstantDaysTwoWeeks() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("two_weeks"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItWasConstant(arrayList), 0);
+    }
+
+    @Test public void calculateConstantDaysMonth() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("month"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItWasConstant(arrayList), 0);
+    }
+
+    @Test public void calculateConstantDaysQuarter() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("quarter"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItWasConstant(arrayList), 0);
+    }
+
+    @Test public void calculateConstantDaysHalfYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("half_year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(0, currencyCalculator.howManyDaysItWasConstant(arrayList));
+    }
+
+    @Test public void calculateConstantDaysYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(0, currencyCalculator.howManyDaysItWasConstant(arrayList));
+    }
 
     private String getXmlFile(String filename) throws IOException {
         String line;
