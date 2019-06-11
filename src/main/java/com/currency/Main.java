@@ -1,9 +1,6 @@
 package com.currency;
 
-import java.io.DataOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -151,9 +148,20 @@ public class Main {
     public static void saveToCSV(CurrencyCalculator currencyCalculator, LinkedHashMap periodMap, String codeValue, String periodValue) {
 
         Set<Map.Entry<String, Float>> set = periodMap.entrySet();
-        String filename = "exportedData/dataNBP-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Timestamp(System.currentTimeMillis())) + "-" + codeValue + "-" + periodValue + ".csv";
+        String filename = "dataNBP-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Timestamp(System.currentTimeMillis())) + "-" + codeValue + "-" + periodValue + ".csv";
         String str = "";
         String dominant = "";
+
+        File fixFile = new File(filename);
+        if(!fixFile.exists()) {
+            try {
+                fixFile.createNewFile();
+            } catch(Exception e) {
+
+            } finally {
+
+            }
+        }
 
         if (currencyCalculator.dominantValue == null) {
             dominant = "The dominant does not occur" + ";";
@@ -192,10 +200,21 @@ public class Main {
 
         Set<Map.Entry<String, Float>> set1 = periodMap1.entrySet();
         Set<Map.Entry<String, Float>> set2 = periodMap2.entrySet();
-        String filename = "exportedData/dataNBP-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Timestamp(System.currentTimeMillis())) + "-" + codeValue1 + "-" + periodValue + ".csv";
+        String filename = "dataNBP-pair-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Timestamp(System.currentTimeMillis())) + "-" + codeValue1 + "-" + periodValue + ".csv";
         String str = "";
         String dominant1 = "";
         String dominant2 = "";
+
+        File fixFile = new File(filename);
+        if(!fixFile.exists()) {
+            try {
+                fixFile.createNewFile();
+            } catch(Exception e) {
+
+            } finally {
+
+            }
+        }
 
         if (currencyCalculator1.dominantValue == null) {
             dominant1 = "The dominant does not occur" + ";";
@@ -214,9 +233,7 @@ public class Main {
         }
 
         try {
-            System.out.println("To tu");
             DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(filename));
-            System.out.println("To tam");
             str = str + periodValue + ";" + codeValue1 + ";" + codeValue2  + ";" + "\n" + "\n"
                     + "Median" + ";" + String.valueOf(currencyCalculator1.medianValue).replace('.', ',') + ";" + String.valueOf(currencyCalculator2.medianValue).replace('.', ',') + ";" + "\n"
                     + "Dominant" + ";" + dominant1 + dominant2 + "\n"
