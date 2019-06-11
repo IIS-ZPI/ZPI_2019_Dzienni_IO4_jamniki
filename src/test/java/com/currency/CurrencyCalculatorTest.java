@@ -181,6 +181,54 @@ public class CurrencyCalculatorTest {
         assertEquals(0, currencyCalculator.howManyDaysItWasConstant(arrayList));
     }
 
+    @Test public void calculateAverageWeek(){
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("week"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.average(arrayList) - 4.219f) < 0.01 );
+    }
+
+    @Test public void calculateAverageTwoWeeks() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("two_weeks"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.average(arrayList) - 4.2520456f) < 0.01 );
+    }
+
+    @Test public void calculateAverageMonth() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("month"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.average(arrayList) - 4.235139f) < 0.01);
+    }
+
+    @Test public void calculateAverageQuarter() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("quarter"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.average(arrayList) - 4.2513185f) < 0.01);
+    }
+
+    @Test public void calculateAverageHalfYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("half_year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.average(arrayList) - 4.2716045f) < 0.01);
+    }
+
+    @Test public void calculateAverageYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.average(arrayList) - 4.253092f) < 0.01);
+    }
+
     private String getXmlFile(String filename) throws IOException {
         String line;
         StringBuilder sb = new StringBuilder();
