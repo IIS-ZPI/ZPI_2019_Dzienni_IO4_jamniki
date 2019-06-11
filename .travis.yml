@@ -3,6 +3,15 @@ jdk: oraclejdk11
 before_install:
   - chmod +x mvnw
 
+notifications:
+  email:
+    recipients:
+      - 209322@edu.p.lodz.pl
+      - 209410@edu.p.lodz.pl
+      - 209412@edu.p.lodz.pl
+      - 209457@edu.p.lodz.pl
+    on_success: never
+    on_failure: always
 
 script:
   - mvn validate
