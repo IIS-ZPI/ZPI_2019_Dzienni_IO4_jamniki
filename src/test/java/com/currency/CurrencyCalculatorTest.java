@@ -277,6 +277,54 @@ public class CurrencyCalculatorTest {
         assertEquals(true, Math.abs(currencyCalculator.standardDeviation(arrayList)-0.04931992f)<0.01);
     }
 
+    @Test public void calculateCoefficientOfVariationWeek(){
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("week"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.coefficientOfVariation(arrayList)-0.0023745939f)<0.01 );
+    }
+
+    @Test public void calculateCoefficientOfVariationTwoWeeks() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("two_weeks"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.coefficientOfVariation(arrayList)-0.00499357f)<0.01 );
+    }
+
+    @Test public void calculateCoefficientOfVariationMonth() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("month"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.coefficientOfVariation(arrayList)-0.0026996161f)<0.01 );
+    }
+
+    @Test public void calculateCoefficientOfVariationQuarter() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("quarter"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.coefficientOfVariation(arrayList)-0.007794667f)<0.01);
+    }
+
+    @Test public void calculateCoefficientOfVariationHalfYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("half_year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.coefficientOfVariation(arrayList)-0.014001778f)<0.01);
+    }
+
+    @Test public void calculateCoefficientOfVariationYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.coefficientOfVariation(arrayList)-0.01159625f)<0.01 );
+    }
+
     private String getXmlFile(String filename) throws IOException {
         String line;
         StringBuilder sb = new StringBuilder();
