@@ -3,9 +3,9 @@ Master | Develop
 [![Build Status](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki.svg?branch=master)](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki) | [![Build Status](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki.svg?branch=develop)](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO5_jamniki)
 
 RELEASE NOTES:
-•	v2.0.0  - https://github.com/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki/wiki/Release-Note-2.0.0
-•	v2.1.0 - https://github.com/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki/wiki/Release-Note-2.1.0
-•	v2.2.0 - https://github.com/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki/wiki/Release-Note-2.2.0
+v2.0.0  - https://github.com/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki/wiki/Release-Note-2.0.0
+v2.1.0 - https://github.com/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki/wiki/Release-Note-2.1.0
+v2.2.0 - https://github.com/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki/wiki/Release-Note-2.2.0
 
 INSTRUKCJA URUCOMIENIA APLIKACJI
 1.	Wybierz czy chcesz przeprowadzić analizę dla jednej czy dwóch walut
