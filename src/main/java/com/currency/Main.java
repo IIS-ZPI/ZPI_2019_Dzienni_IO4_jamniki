@@ -59,7 +59,7 @@ public class Main {
         if(functionality.equals("1")) {
             oneCurrencyCalculator();
         } else if(functionality.equals("2")) {
-            //two currencies
+            doubleCurrencyCalculator();
         } else{
             System.out.println("Wront input: " + functionality);
         }
@@ -99,6 +99,48 @@ public class Main {
         System.out.println(currencyCalculator.toString());
     }
 
+    public static void doubleCurrencyCalculator(){
+        NbpApiAdapter nbpApiAdapter = new NbpApiAdapter();
+        XmlParser xml = new XmlParser();
+        CurrencyCalculator currencyCalculator1 = new CurrencyCalculator();
+        CurrencyCalculator currencyCalculator2 = new CurrencyCalculator();
 
+        System.out.println("\nType currency symbol of the first currency: \t" + Arrays.toString(CURRENCY_CODES));
+        Scanner sc = new Scanner(System.in);
+        String codeValue1 = sc.nextLine();
+        if(!verifyCurrency(codeValue1.toUpperCase()))
+            return;
+
+        System.out.println("\nType currency symbol of the second currency: \t" + Arrays.toString(CURRENCY_CODES));
+        String codeValue2 = sc.nextLine();
+        if(!verifyCurrency(codeValue2.toUpperCase()))
+            return;
+
+        System.out.println("\nSelect analize period: \t" + Arrays.toString(PERIOD_CODES));
+        String periodValue = sc.nextLine();
+        if(!verifyPeriod(periodValue.toLowerCase()))
+            return;
+
+        String url1 = nbpApiAdapter.buildUrl(codeValue1);
+        String url2 = nbpApiAdapter.buildUrl(codeValue2);
+        String rawXml1 = nbpApiAdapter.requestDataFromServer(url1);
+        String rawXml2 = nbpApiAdapter.requestDataFromServer(url2);
+
+        xml.parseData(rawXml1);
+        LinkedHashMap periodMap1 = getPeriodHashMap(periodValue.toLowerCase(), xml);
+        ArrayList periodValues1 = convertToArrayList(periodMap1);
+        currencyCalculator1.calculateAll(periodValues1);
+
+        xml.parseData(rawXml2);
+        LinkedHashMap periodMap2 = getPeriodHashMap(periodValue.toLowerCase(), xml);
+        ArrayList periodValues2 = convertToArrayList(periodMap2);
+        currencyCalculator2.calculateAll(periodValues2);
+
+        System.out.println("\nCurrency analize for: "+periodValue.toLowerCase());
+        System.out.println("\n\nCurrency: "+codeValue1.toUpperCase());
+        System.out.println(currencyCalculator1.toString());
+        System.out.println("\n\nCurrency: "+codeValue2.toUpperCase());
+        System.out.println(currencyCalculator2.toString());
+    }
 
 }
