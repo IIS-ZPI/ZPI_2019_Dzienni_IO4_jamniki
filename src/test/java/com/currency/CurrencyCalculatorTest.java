@@ -325,6 +325,54 @@ public class CurrencyCalculatorTest {
         assertEquals(true,Math.abs(currencyCalculator.coefficientOfVariation(arrayList)-0.01159625f)<0.01 );
     }
 
+    @Test public void calculateMedianWeek(){
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("week"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.median(arrayList)-4.2149496)<0.01);
+    }
+
+    @Test public void calculateMedianTwoWeeks() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("two_weeks"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.median(arrayList)-4.2449)<0.01);
+    }
+
+    @Test public void calculateMedianMonth() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("month"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.median(arrayList)-4.23645)<0.01);
+    }
+
+    @Test public void calculateMedianQuarter() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("quarter"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.median(arrayList)-4.2424498)<0.01 );
+    }
+
+    @Test public void calculateMedianHalfYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("half_year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.median(arrayList)-4.2681503)<0.01);
+    }
+
+    @Test public void calculateMedianYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.median(arrayList)-4.2442)<0.01);
+    }
+
     private String getXmlFile(String filename) throws IOException {
         String line;
         StringBuilder sb = new StringBuilder();
