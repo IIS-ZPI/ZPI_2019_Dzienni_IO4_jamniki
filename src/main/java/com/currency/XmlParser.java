@@ -59,6 +59,10 @@ public class XmlParser {
         return getPeriodMap(0, 0, 1);
     }
 
+    public LinkedHashMap<String, Float> getAllParsed() {
+        return parsedValues;
+    }
+
     private LinkedHashMap getPeriodMap(int weeks, int months, int years) {
         LinkedHashMap<String, Float> periodMap = new LinkedHashMap<>();
 
