@@ -1,6 +1,6 @@
 Master | Develop
 ------------ | -------------
-[![Build Status](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki.svg?branch=master)](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_ IO4_jamniki) | [![Build Status](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_ IO4_jamniki.svg?branch=develop)](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_ IO4_jamniki)
+[![Build Status](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki.svg?branch=master)](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki) | [![Build Status](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki.svg?branch=develop)](https://travis-ci.org/IIS-ZPI/ZPI_2019_Dzienni_IO5_jamniki)
 
 RELEASE NOTES:
 •	v2.0.0  - https://github.com/IIS-ZPI/ZPI_2019_Dzienni_IO4_jamniki/wiki/Release-Note-2.0.0
