@@ -86,6 +86,54 @@ public class CurrencyCalculatorTest {
         assertEquals(currencyCalculator.calculateDroppingDays(arrayList), 129);
     }
 
+    @Test public void calculateGrowingDaysWeek() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("week"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItGrew(arrayList), 1);
+    }
+
+    @Test public void calculateGrowingDaysTwoWeeks() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("two_weeks"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItGrew(arrayList), 3);
+    }
+
+    @Test public void calculateGrowingDaysMonth() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("month"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItGrew(arrayList), 11);
+    }
+
+    @Test public void calculateGrowingDaysQuarter() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("quarter"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItGrew(arrayList), 29);
+    }
+
+    @Test public void calculateGrowingDaysHalfYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("half_year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItGrew(arrayList), 45);
+    }
+
+    @Test public void calculateGrowingDaysYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(currencyCalculator.howManyDaysItGrew(arrayList), 121);
+    }
+
     private String getXmlFile(String filename) throws IOException {
         String line;
         StringBuilder sb = new StringBuilder();
