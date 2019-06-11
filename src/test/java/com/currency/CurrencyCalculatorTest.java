@@ -229,6 +229,54 @@ public class CurrencyCalculatorTest {
         assertEquals(true, Math.abs(currencyCalculator.average(arrayList) - 4.253092f) < 0.01);
     }
 
+    @Test public void calculateStandardDeviationWeek(){
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("week"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.standardDeviation(arrayList)-0.010018411f)<0.01);
+    }
+
+    @Test public void calculateStandardDeviationTwoWeeks() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("two_weeks"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.standardDeviation(arrayList)-0.021232888f)<0.01);
+    }
+
+    @Test public void calculateStandardDeviationMonth() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("month"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.standardDeviation(arrayList)-0.011433249f)<0.01 );
+    }
+
+    @Test public void calculateStandardDeviationQuarter() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("quarter"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.standardDeviation(arrayList)-0.033137612f)<0.01 );
+    }
+
+    @Test public void calculateStandardDeviationHalfYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("half_year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true,Math.abs(currencyCalculator.standardDeviation(arrayList)-0.05981006f)<0.01 );
+    }
+
+    @Test public void calculateStandardDeviationYear() {
+        xmlClass.parseData(nbpApiAdapter.requestDataFromServer("year"));
+        LinkedHashMap hashMap = xmlClass.getAllParsed();
+        arrayList = Main.convertToArrayList(hashMap);
+
+        assertEquals(true, Math.abs(currencyCalculator.standardDeviation(arrayList)-0.04931992f)<0.01);
+    }
+
     private String getXmlFile(String filename) throws IOException {
         String line;
         StringBuilder sb = new StringBuilder();
