@@ -1,6 +1,9 @@
 package com.currency;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CurrencyCalculator {
 
@@ -8,6 +11,76 @@ public class CurrencyCalculator {
         
     }
 
+    public Float average(ArrayList values){
+
+        Float sum = 0.0f;
+        for (int i=0; i< values.size(); i++) {
+            sum += Float.valueOf(values.get(i).toString());
+        }
+        Float avg = sum / values.size();
+        return avg;
+    }
+
+    public Float standardDeviation(ArrayList values){
+
+        Float avg = average(values);
+        Float sum = 0.0f;
+        for (int i=0; i< values.size(); i++) {
+            sum += new Float(Math.pow(Float.valueOf(values.get(i).toString()) - avg, 2));
+        }
+        Float variance = sum / values.size();
+        Float deviation = new Float(Math.sqrt(variance));
+        return deviation;
+    }
+
+    public Float coefficientOfVariation(ArrayList values){
+
+        Float deviation = standardDeviation(values);
+        Float avg = average(values);
+        Float coefficient = deviation / avg;
+        return coefficient;
+    }
+
+    public Float median(ArrayList valuesList) {
+        int quantity = valuesList.size();
+        ArrayList<Float> tempArr = new ArrayList<Float>(valuesList);
+
+        Collections.sort(tempArr);
+
+        if (quantity % 2 != 0) {
+            return tempArr.get(((quantity / 2)));
+        } else {
+            return (tempArr.get((quantity / 2) - 1) + (Float) tempArr.get((quantity / 2))) / 2;
+        }
+    }
+
+    public ArrayList<Float> dominant(ArrayList valuesList) {
+
+        ArrayList<Float> dominantValue = new ArrayList<Float>();
+        Map<Float,Integer> duplicates = new HashMap<Float,Integer>();
+
+        for (Object value : valuesList) {
+            if (duplicates.containsKey(value)) {
+                duplicates.put((Float) value, duplicates.get(value) + 1);
+            } else {
+                duplicates.put((Float) value, 1);
+            }
+        }
+
+        int maxValueInMap = (Collections.max(duplicates.values()));
+
+        if (maxValueInMap == 1) {
+            return null;
+        } else {
+            for (Map.Entry<Float,Integer> entry : duplicates.entrySet()) {
+                if (entry.getValue() == maxValueInMap) {
+                    dominantValue.add(entry.getKey());
+                }
+            }
+
+            return dominantValue;
+        }
+    }
 
     public int howManyDaysItGrew(ArrayList values) {
         int days = 0;
