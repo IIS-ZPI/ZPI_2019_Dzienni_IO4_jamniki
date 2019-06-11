@@ -7,8 +7,25 @@ import java.util.Map;
 
 public class CurrencyCalculator {
 
+    public Float averageValue,standardDeviationValue,coefficientOfVariationValue;
+    public Float medianValue;
+    public ArrayList<Float> dominantValue;
+    public int howManyDaysItGrewValue, calculateDroppingDaysValue,howManyDaysItWasConstantValue;
+
     public void CurrencyCalculator() {
-        
+        dominantValue = new ArrayList<>();
+    }
+
+    public void calculateAll(ArrayList values)
+    {
+        averageValue = average(values);
+        standardDeviationValue = standardDeviation(values);
+        coefficientOfVariationValue = coefficientOfVariation(values);
+        medianValue = median(values);
+        dominantValue = dominant(values);
+        howManyDaysItGrewValue = howManyDaysItGrew(values);
+        calculateDroppingDaysValue = calculateDroppingDays(values);
+        howManyDaysItWasConstantValue = howManyDaysItWasConstant(values);
     }
 
     public Float average(ArrayList values){
