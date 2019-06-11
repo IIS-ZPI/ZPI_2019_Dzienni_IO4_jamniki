@@ -1,0 +1,37 @@
+<ExchangeRatesSeries>
+    <Table>A</Table>
+    <Currency>euro</Currency>
+    <Code>EUR</Code>
+    <Rates>
+        <Rate>
+            <No>224/A/NBP/2017</No>
+            <EffectiveDate>2017-11-20</EffectiveDate>
+            <Mid>4.2351</Mid>
+        </Rate>
+        <Rate>
+            <No>225/A/NBP/2017</No>
+            <EffectiveDate>2017-11-21</EffectiveDate>
+            <Mid>4.2296</Mid>
+        </Rate>
+        <Rate>
+            <No>226/A/NBP/2017</No>
+            <EffectiveDate>2017-11-22</EffectiveDate>
+            <Mid>4.2183</Mid>
+        </Rate>
+        <Rate>
+            <No>227/A/NBP/2017</No>
+            <EffectiveDate>2017-11-23</EffectiveDate>
+            <Mid>4.2108</Mid>
+        </Rate>
+        <Rate>
+            <No>228/A/NBP/2017</No>
+            <EffectiveDate>2017-11-24</EffectiveDate>
+            <Mid>4.2116</Mid>
+        </Rate>
+        <Rate>
+            <No>229/A/NBP/2017</No>
+            <EffectiveDate>2017-11-27</EffectiveDate>
+            <Mid>4.2086</Mid>
+        </Rate>
+    </Rates>
+</ExchangeRatesSeries>
