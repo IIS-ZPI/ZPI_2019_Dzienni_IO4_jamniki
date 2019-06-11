@@ -28,6 +28,16 @@ public class CurrencyCalculator {
         howManyDaysItWasConstantValue = howManyDaysItWasConstant(values);
     }
 
+    public String toString(){
+        String dominant;
+        if (dominantValue == null) {
+            dominant = "The dominant does not occur" + ";";
+        } else {
+            dominant = String.valueOf(dominantValue);
+        }
+        return "Standard deviation: "+standardDeviationValue+"\nCoefficient of variation: "+coefficientOfVariationValue+"\nExchange rate rising days: "+howManyDaysItGrewValue+"\nExchange rate dropping days: "+calculateDroppingDaysValue+"\nExchange rate constant days: "+howManyDaysItWasConstantValue+ "\nMedian: "+medianValue+"\nDominant: "+dominant;
+    }
+
     public Float average(ArrayList values){
 
         Float sum = 0.0f;

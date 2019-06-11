@@ -57,7 +57,7 @@ public class Main {
 
         String functionality = sc.next();
         if(functionality.equals("1")) {
-            //one currency
+            oneCurrencyCalculator();
         } else if(functionality.equals("2")) {
             //two currencies
         } else{
@@ -67,6 +67,37 @@ public class Main {
 
     }
 
+    public static void oneCurrencyCalculator() {
+        NbpApiAdapter nbpApiAdapter = new NbpApiAdapter();
+        XmlParser xml = new XmlParser();
+        CurrencyCalculator currencyCalculator = new CurrencyCalculator();
+
+        System.out.println("\nType currency symbol: \t" + Arrays.toString(CURRENCY_CODES));
+
+        Scanner sc = new Scanner(System.in);
+        String codeValue = sc.nextLine();
+        if(!verifyCurrency(codeValue.toUpperCase())) {
+            return;
+        }
+
+        System.out.println("\nSelect analize period: \t" + Arrays.toString(PERIOD_CODES));
+        String periodValue = sc.nextLine();
+        if(!verifyPeriod(periodValue.toLowerCase())) {
+            return;
+        }
+
+        String url = nbpApiAdapter.buildUrl(codeValue);
+        String rawXml = nbpApiAdapter.requestDataFromServer(url);
+        xml.parseData(rawXml);
+
+        LinkedHashMap periodMap = getPeriodHashMap(periodValue.toLowerCase(), xml);
+        ArrayList periodValues = convertToArrayList(periodMap);
+        currencyCalculator.calculateAll(periodValues);
+
+        System.out.println("\nCurrency analize for: "+periodValue.toLowerCase());
+        System.out.println("\n\nCurrency: "+codeValue.toUpperCase());
+        System.out.println(currencyCalculator.toString());
+    }
 
 
 
